@@ -22,13 +22,3 @@ class Contact {
 
 let contact = new Contact("Samarh", "Sawale", "Marunji", "Pune", "Maharastra", "5012", "9104223344", "samarth1@gmail.com");
 console.log(contact);
-
-
-
-
-
-
-
-    
-
-
