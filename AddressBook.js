@@ -76,7 +76,8 @@ let option;
     do {
         console.log("1: Add Person Details to AddressBook ");
         console.log("2: Edit the Details");
-        console.log("3: Display the Details");
+        console.log("3: Delete the Details");
+        console.log("4: Display the Details");
         console.log("0: exit");
         option = Number(prompt("Please Choose Proper Choice: "));
         switch (option) {
@@ -88,6 +89,9 @@ let option;
                 editDetails(editName); 
                 break;
             case 3:
+                deleteDetails();
+                break;
+            case 4:
                 displayDetails();
                 break;
         }
@@ -134,6 +138,20 @@ function editDetails(editName){
         }
     }
     console.log(contactArray);
+}
+
+function deleteDetails() {
+    if(contactArray.length === 0) {
+        console.log("No contacts found in the list");
+    }   
+    let deleteName = prompt("Enter the firstname which you want to delete: ");
+    let found = contactArray.find((contact)=>contact.firstName == deleteName);
+    if(found == undefined) {
+        console.log("No such contact in Addressbook.");
+    }else {
+        contactArray = contactArray.filter((contacts)=>contacts.firstName!=deleteName);
+        console.log("Contact is deleted successfully from Addressbook.")
+    }
 }
 
 function displayDetails() {
