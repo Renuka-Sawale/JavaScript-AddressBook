@@ -83,6 +83,7 @@ let option;
         console.log("7: View Contact By City");
         console.log("8: Count Contacts by City");
         console.log("9: Sort Contacts by FirstName");
+        console.log("10: Sort Contacts Entries");
         console.log("0: exit");
         option = Number(prompt("Please Choose Proper Choice: "));
         switch (option) {
@@ -113,6 +114,9 @@ let option;
                 break;
             case 9:
                 sortContactByName();
+            break;
+            case 10:
+                sortContactEntries();
             break;
         }
     }while (option != 0) ;
@@ -207,4 +211,31 @@ function sortContactByName() {
         contactArray.sort(contacts.firstName);
     }
     contactArray.forEach(contact => console.log(contact.toString()));
+}
+
+function sortContactEntries(){
+    console.log("1: Sort State");
+    console.log("2: Sort City");
+    console.log("3: Sort zip");
+    let option = Number(prompt("your choice: "));
+    switch (option) {
+        case 1:
+            for (let contacts in contactArray) {
+                contactArray.sort(contacts.state);
+            }
+            contactArray.forEach(contact => console.log(contact.toString()));
+            break;
+        case 2:
+            for (let contacts in contactArray) {
+                contactArray.sort(contacts.city);
+            }
+            contactArray.forEach(contact => console.log(contact.toString()));
+            break;
+        case 3:
+            for (let contacts in contactArray) {
+                contactArray.sort(contacts.zip);
+            }
+            contactArray.forEach(contact => console.log(contact.toString()));
+        break;
+    }
 }
