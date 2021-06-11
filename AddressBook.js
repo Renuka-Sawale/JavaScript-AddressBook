@@ -102,7 +102,7 @@ let option;
                 countContact();
             break;
             case 6:
-                SearchContactInState();
+                searchContactInState();
                 break;
             case 7:
                 displayContactByState();
@@ -179,7 +179,7 @@ function countContact() {
     console.log("The Number of Contacts: "+contactArray.reduce(contact=>contact + 1, 0));
 }
 
-function SearchContactInState() {
+function searchContactInState() {
     let state = prompt("Enter the State name: ");
     console.log(contactArray.filter((contact) => contact.state == state));
 }
