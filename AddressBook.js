@@ -79,9 +79,6 @@ let option;
         console.log("3: Delete the Details");
         console.log("4: Display the Details");
         console.log("5: Count Contacts");
-        console.log("6: Search Contacts by State");
-        console.log("7: Display Contacts by State");
-        console.log("8: Count Contacts by State");
         console.log("0: exit");
         option = Number(prompt("Please Choose Proper Choice: "));
         switch (option) {
@@ -116,6 +113,10 @@ let option;
 function addDetails() {
     for(let i=0; i<1; i++) {
         let firstName = prompt("Enter the Firstname: ");
+        if (contactArray.find((contact) => (contact.firstName) == (firstName))) {
+            console.log("The Contact is already exists in the address book");
+            return;
+        }
         let lastName = prompt("Enter the Lastname: ");
         let address = prompt("Enter the Address: ");
         let city = prompt("Enter the City: ");
@@ -161,8 +162,8 @@ function deleteDetails() {
         console.log("No contacts found in the list");
     }   
     let deleteName = prompt("Enter the firstname which you want to delete: ");
-    let found = contactArray.find((contact)=>contact.firstName == deleteName);
-    if(found == undefined) {
+    let contactfound = contactArray.find((contact)=>contact.firstName == deleteName);
+    if(contactfound == undefined) {
         console.log("No such contact in Addressbook.");
     }else {
         contactArray = contactArray.filter((contacts)=>contacts.firstName!=deleteName);
@@ -170,26 +171,6 @@ function deleteDetails() {
     }
 }
 
-function displayDetails() {
-    for(let i = 0; i < contactArray.length; i++)
-        console.log(contactArray[i].toString(),"\n");
-}
-
 function countContact() {
     console.log("The Number of Contacts: "+contactArray.reduce(contact=>contact + 1, 0));
-}
-
-function searchContactInState() {
-    let state = prompt("Enter the State name: ");
-    console.log(contactArray.filter((contact) => contact.state == state));
-}
-
-function displayContactByState() {
-    let state = prompt("Enter the State name: ");
-    console.log(contactArray.filter((contact) => contact.state == state));
-}
-
-function countContactByState() {
-    let countstate = prompt("Enter state: ");
-    console.log(contactArray.filter(contact => contact.state == countstate).reduce(contact => contact + 1, 0));
 }
