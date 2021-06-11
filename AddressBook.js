@@ -80,6 +80,7 @@ let option;
         console.log("4: Display the Details");
         console.log("5: Count Contacts");
         console.log("6: Search Contact By City");
+        console.log("7: View Contact By City");
         console.log("0: exit");
         option = Number(prompt("Please Choose Proper Choice: "));
         switch (option) {
@@ -100,7 +101,10 @@ let option;
                 countContact();
             break;
             case 6:
-                searchContactInCity();
+                searchContactByCity();
+            break;
+            case 7:
+                viewContactByCity();
             break;
         }
     }while (option != 0) ;
@@ -175,7 +179,12 @@ function countContact() {
     console.log("The Number of Contacts: "+contactArray.reduce(contact=>contact + 1, 0));
 }
 
-function searchContactInCity() {
+function searchContactByCity() {
     let city = prompt("Enter the city name: ");
+    console.log(contactArray.filter((contact) => contact.city == city));
+}
+
+function viewContactByCity() {
+    let city = prompt("Enter city: ");
     console.log(contactArray.filter((contact) => contact.city == city));
 }
