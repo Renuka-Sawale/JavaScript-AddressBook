@@ -78,6 +78,10 @@ let option;
         console.log("2: Edit the Details");
         console.log("3: Delete the Details");
         console.log("4: Display the Details");
+        console.log("5: Count Contacts");
+        console.log("6: Search Contacts by State");
+        console.log("7: Display Contacts by State");
+        console.log("8: Count Contacts by State");
         console.log("0: exit");
         option = Number(prompt("Please Choose Proper Choice: "));
         switch (option) {
@@ -93,6 +97,18 @@ let option;
                 break;
             case 4:
                 displayDetails();
+                break;
+            case 5:
+                countContact();
+            break;
+            case 6:
+                SearchContactInState();
+                break;
+            case 7:
+                displayContactByState();
+                break;
+            case 8:
+                countContactByState();
                 break;
         }
     }while (option != 0) ;
@@ -157,4 +173,23 @@ function deleteDetails() {
 function displayDetails() {
     for(let i = 0; i < contactArray.length; i++)
         console.log(contactArray[i].toString(),"\n");
+}
+
+function countContact() {
+    console.log("The Number of Contacts: "+contactArray.reduce(contact=>contact + 1, 0));
+}
+
+function SearchContactInState() {
+    let state = prompt("Enter the State name: ");
+    console.log(contactArray.filter((contact) => contact.state == state));
+}
+
+function displayContactByState() {
+    let state = prompt("Enter the State name: ");
+    console.log(contactArray.filter((contact) => contact.state == state));
+}
+
+function countContactByState() {
+    let countstate = prompt("Enter state: ");
+    console.log(contactArray.filter(contact => contact.state == countstate).reduce(contact => contact + 1, 0));
 }
